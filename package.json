@@ -8,6 +8,8 @@
     "experimental": "node -r esm --experimental-repl-await"
   },
   "dependencies": {
+    "bull": "^3.11.0",
+    "bull-arena": "^2.6.4",
     "convict": "^5.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
@@ -18,6 +20,8 @@
     "morgan": "~1.9.1",
     "nodemon": "^1.19.4",
     "pg": "^7.12.1",
+    "promisify": "^0.0.3",
+    "redis": "^2.8.0",
     "sequelize": "^5.21.1"
   },
   "devDependencies": {

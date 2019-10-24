@@ -28,6 +28,14 @@ const config = convict({
       env: 'DB_URI',
     },
   },
+  redis: {
+    uri: {
+      doc: 'Redis URI',
+      format: '*',
+      default: 'redis://localhost:6379',
+      env: 'REDIS_URI',
+    },
+  },
 });
 
 export default config;
