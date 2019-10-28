@@ -1,0 +1,5 @@
+const convict = require('./config')
+
+module.exports = {
+  url: convict.get('db.uri')
+}
