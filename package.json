@@ -5,23 +5,22 @@
   "scripts": {
     "start": "nodemon -r esm ./bin/www",
     "console": "DEBUG=express:*  node -r esm ./bin/www",
-    "experimental": "node -r esm --experimental-repl-await"
+    "experimental": "node -r esm --experimental-repl-await",
+    "work": "node -r esm ./workers/workers.js"
   },
   "dependencies": {
+    "bitcoin-core": "^3.0.0",
+    "bitcore-lib": "^8.9.0",
     "bull": "^3.11.0",
     "bull-arena": "^2.6.4",
     "convict": "^5.2.0",
-    "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "~4.16.1",
-    "install": "^0.13.0",
     "morgan": "~1.9.1",
     "nodemon": "^1.19.4",
     "pg": "^7.12.1",
-    "promisify": "^0.0.3",
-    "redis": "^2.8.0",
     "sequelize": "^5.21.1"
   },
   "devDependencies": {

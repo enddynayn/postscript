@@ -1,24 +1,21 @@
 import express from 'express';
-import url from 'url';
-import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import Arena from 'bull-arena';
 import config from './config';
 
-import { queues, NOTIFY_URL } from './queues';
+import { BLOCKS, COLLECTION, TRANSACTIONS } from './workers/queues';
 
 import healthRouter from './routes/health';
-import usersRouter from './routes/users';
+import opReturnRouter from './routes/opReturn';
 
 const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 app.use('/health', healthRouter);
-app.use('/users', usersRouter);
+app.use('/opreturn', opReturnRouter);
 
 app.use(
   '/',
@@ -26,8 +23,18 @@ app.use(
     {
       queues: [
         {
-          name: NOTIFY_URL,
-          hostId: 'Worker',
+          name: BLOCKS,
+          hostId: 'Blocks',
+          redis: { uri: config.get('redis.uri') },
+        },
+        {
+          name: TRANSACTIONS,
+          hostId: 'Transactions',
+          redis: { uri: config.get('redis.uri') },
+        },
+        {
+          name: COLLECTION,
+          hostId: 'Collection',
           redis: { uri: config.get('redis.uri') },
         },
       ],

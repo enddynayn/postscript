@@ -1,4 +1,4 @@
-import convict from 'convict';
+const convict = require('convict');
 
 const config = convict({
   env: {
@@ -36,6 +36,48 @@ const config = convict({
       env: 'REDIS_URI',
     },
   },
+  bitcoin: {
+    client: {
+      network: {
+        doc: 'the nework to coneect to',
+        format: String,
+        default: 'mainnet',
+        env: 'BITCOIN_CLIENT_NETWORK',
+      },
+      host: {
+        doc: 'IP address',
+        format: 'ipaddress',
+        default: '35.188.76.28',
+        env: 'BITCOIN_CLIENT_HOST',
+      },
+      username: {
+        doc: 'The username of client.',
+        format: String,
+        default: 'taco',
+        env: 'BITCOIN_CLIENT_USERNAME',
+      },
+      password: {
+        doc: 'The password of client node.',
+        format: String,
+        default: 'foobar',
+        env: 'BITCOIN_CLIENT_PASSWORD',
+      },
+      port: {
+        doc: 'The port to bind.',
+        format: 'port',
+        default: '8332',
+        env: 'BITCOIN_CLIENT_PORT',
+      },
+    },
+    synchronize: {
+      start: {
+        doc: 'The block-number to start synchronizing at.',
+        format: 'nat',
+        default: 500000,
+        env: 'BITCOIN_SYNCHRONIZE_START',
+      },
+    },
+  },
 });
 
-export default config;
+module.exports = config;
