@@ -13,7 +13,7 @@
     "bitcore-lib": "^8.9.0",
     "bull": "^3.11.0",
     "bull-arena": "^2.6.4",
-    "convict": "^5.2.0",
+    "convict": "^6.2.3",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
